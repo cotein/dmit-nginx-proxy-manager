@@ -1,8 +1,9 @@
 version: '3.8'
 
 services:
-  app:
+  dmit_proxy_manager:
     image: 'jc21/nginx-proxy-manager:latest'
+    container_name: dmit_proxy_manager
     ports:
       - '81:81'
     volumes:
@@ -10,8 +11,9 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
 
-  db:
+  dmit_proxy_manager_db:
     image: 'jc21/mariadb-aria:10.4.15'
+    container_name: dmit_proxy_manager_db
     environment:
       MYSQL_ROOT_PASSWORD: 'npm'
       MYSQL_DATABASE: 'npm'
@@ -19,3 +21,7 @@ services:
       MYSQL_PASSWORD: 'npm'
     volumes:
       - ./data/mysql:/var/lib/mysql
+
+networks:
+  dmit_network:
+    external: true
