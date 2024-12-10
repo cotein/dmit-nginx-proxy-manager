@@ -34,9 +34,46 @@ El despliegue incluye los siguientes servicios:
   - Volúmenes:
     - `./data/mysql:/var/lib/mysql`
 
+## Nota: Comandos útilies
+Para limpiar todos los contenedores, redes y volúmenes que no se usan en Docker, puedes usar los siguientes comandos:
+
+1. Para eliminar todos los contenedores detenidos, redes no utilizadas, imágenes colgantes y volúmenes no utilizados:
+
+```sh
+docker system prune -a --volumes
+```
+
+Este comando eliminará:
+
+- Todos los contenedores detenidos
+- Todas las redes no utilizadas
+- Todas las imágenes colgantes (imágenes sin etiquetas)
+- Todos los volúmenes no utilizados
+
+2. Si solo quieres eliminar los volúmenes no utilizados:
+
+```sh
+docker volume prune
+```
+
+3. Si solo quieres eliminar las redes no utilizadas:
+
+```sh
+docker network prune
+```
+
+4. Si solo quieres eliminar los contenedores detenidos:
+
+```sh
+docker container prune
+```
+
+Estos comandos te ayudarán a limpiar tu entorno Docker de recursos no utilizados.
+
 ## Uso
 
 Para desplegar los servicios, ejecuta el siguiente comando:
 
 ```sh
 docker-compose up -d
+

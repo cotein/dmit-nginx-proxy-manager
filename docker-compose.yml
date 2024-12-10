@@ -4,13 +4,12 @@ services:
   app:
     image: 'jc21/nginx-proxy-manager:latest'
     ports:
-      - '8080:80'
       - '81:81'
-      - '4443:443'
     volumes:
       - ./config.json:/app/config/production.json
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+
   db:
     image: 'jc21/mariadb-aria:10.4.15'
     environment:
