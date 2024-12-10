@@ -10,6 +10,8 @@ services:
       - ./config.json:/app/config/production.json
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - dmit_network
 
   dmit_proxy_manager_db:
     image: 'jc21/mariadb-aria:10.4.15'
@@ -21,6 +23,8 @@ services:
       MYSQL_PASSWORD: 'npm'
     volumes:
       - ./data/mysql:/var/lib/mysql
+    networks:
+      - dmit_network
 
 networks:
   dmit_network:
